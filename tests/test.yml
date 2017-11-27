@@ -9,6 +9,10 @@
   - include_tasks: setup-debian.yml
     when: ansible_distribution == "Debian"
 
+  - name: install git
+    apt:
+      name: git
+
   - include_role:
       name: role_under_test
     with_items: '{{ php_versions }}'

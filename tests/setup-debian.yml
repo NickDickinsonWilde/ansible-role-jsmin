@@ -1,5 +1,5 @@
 ---
-- name: Set php_versions for Ubuntu
+- name: Set variables for Debian.
   set_fact:
     php_versions:
     - 5.6

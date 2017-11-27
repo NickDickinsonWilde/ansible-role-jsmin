@@ -11,10 +11,6 @@
   apt_repository:
     repo: ppa:ondrej/php
 
-- name: install git
-  apt:
-    name: git
-
 - name: Install PHP development files
   apt:
     name: php{{ item }}-dev
