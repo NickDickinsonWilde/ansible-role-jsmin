@@ -1,0 +1,11 @@
+---
+- name: Set php_versions for Ubuntu
+  set_fact:
+    php_versions:
+    - 5.6
+    jsmin_path_phpconfig: php-config
+    jsmin_path_phpize: phpize
+
+- name: Install PHP development files
+  apt:
+    name: php5-dev
