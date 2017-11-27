@@ -2,9 +2,10 @@
 services: docker
 
 env:
+  - distro: ubuntu1710
   - distro: ubuntu1604
   - distro: ubuntu1404
-  - distro: ubuntu1204
+  - distro: debian9
   - distro: debian8
 
 script:

@@ -3,12 +3,18 @@
 
   vars:
     php_versions:
-    #- 5.6
-    #- 7.1
-    - 7.0
-    #- 7.2
+    - 5.6
 
   tasks:
+
+  - name: Set php_versions for Ubuntu
+    set_fact:
+      php_versions:
+      - 5.6
+      - 7.0
+      - 7.1
+      - 7.2
+    when: ansible_distribution == "Ubuntu"
 
   - name: Add PPA for latest php
     apt_repository:
