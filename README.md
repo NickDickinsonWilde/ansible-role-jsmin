@@ -8,8 +8,10 @@ Requirements
 ------------
 
 - Debian/Ubuntu
+- Git. A role such as [geerlingguy.git](https://galaxy.ansible.com/geerlingguy/git/) can supply this.
 - PHP
 - PHP Development headers installed for any PHP version(s) you want to target.
+
 
 Role Variables
 --------------

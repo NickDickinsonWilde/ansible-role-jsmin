@@ -3,17 +3,21 @@
 
   vars:
     php_versions:
-    - 5.6
-    - 7.1
+    #- 5.6
+    #- 7.1
     - 7.0
-    - 7.2
-
+    #- 7.2
 
   tasks:
 
   - name: Add PPA for latest php
     apt_repository:
       repo: ppa:ondrej/php
+    when: ansible_distribution == "Ubuntu"
+
+  - name: install git
+    apt:
+      name: git
 
   - name: Install PHP development files
     apt:
