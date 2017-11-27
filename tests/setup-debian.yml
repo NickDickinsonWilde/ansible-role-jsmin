@@ -3,7 +3,7 @@
   set_fact:
     php_versions:
     - 5.6
-    jsmin_path_ini: /etc/php/{{ jsmin_php_version|int }}/mods-available/jsmin.ini
+    jsmin_path_ini: /etc/php/5/mods-available/jsmin.ini
     jsmin_path_phpconfig: php-config
     jsmin_path_phpize: phpize
 
