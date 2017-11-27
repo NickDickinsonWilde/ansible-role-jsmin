@@ -28,6 +28,18 @@ The location that jsmin will be cloned to for building.
 
 Whether or not to enable the jsmin module after building & installing.
 
+    jsmin_path_ini: /etc/php/{{ jsmin_php_version }}/mods-available/jsmin.ini
+
+The ini path to use to create the jsmin.ini if enabling jsmin.
+
+    jsmin_path_phpconfig: php-config{{ jsmin_php_version }}
+
+The path to the php-config binary.
+
+    jsmin_path_phpize: phpize{{ jsmin_php_version }}
+
+The path to the phpize binary.
+
 Example Playbook
 ----------------
 

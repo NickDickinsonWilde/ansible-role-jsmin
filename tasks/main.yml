@@ -41,14 +41,14 @@
   when: jsmin_current_version.stdout == jsmin_version.stdout
 
 - name: Run phpize
-  command: phpize{{ jsmin_php_version }}
+  command: '{{ jsmin_path_phpize }}'
   args:
     chdir: '{{ jsmin_clone_dest }}'
   changed_when: false
   when: jsmin_latest_installed is undefined
 
 - name: Configure jsmin for building
-  shell: './configure --with-php-config=php-config{{ jsmin_php_version }}'
+  shell: './configure --with-php-config={{ jsmin_path_phpconfig }}'
   args:
     chdir: '{{ jsmin_clone_dest }}'
   changed_when: false
@@ -69,8 +69,10 @@
 - name: Create jsmin.ini
   copy:
     content: 'extension=jsmin.so'
-    dest: '/etc/php/{{ jsmin_php_version }}/mods-available/jsmin.ini'
-  when: jsmin_latest_installed is undefined
+    dest: '{{ jsmin_path_ini }}'
+  when:
+  - jsmin_latest_installed is undefined
+  - jsmin_enable
 
 - name: Enable jsmin
   command: phpenmod -v {{ jsmin_php_version }} jsmin
