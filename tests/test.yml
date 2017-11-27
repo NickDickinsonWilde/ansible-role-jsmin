@@ -29,6 +29,13 @@
     apt:
       name: php{{ item }}-dev
     with_items: '{{ php_versions }}'
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Install PHP development files
+    apt:
+      name: php5-dev
+    with_items: '{{ php_versions }}'
+    when: ansible_distribution == "Debian"
 
   - include_role:
       name: role_under_test
