@@ -1,0 +1,45 @@
+---
+- name: Select PHP Version
+  shell: php -v |  grep -Po -m 1 "PHP \K[0-9].[0-9]"
+  register: jsmin_php_version
+  when: jsmin_php_version is undefined
+
+- name: Select JSMin branch for PHP 5.x
+  set_fact:
+    jsmin_branch: master
+  when: jsmin_php_version|int == 5
+
+- name: Select JSMin branch for PHP 7.x
+  set_fact:
+    jsmin_branch: feature/php7
+  when: jsmin_php_version|int == 7
+
+- name: Clone the jsmin repo
+  git:
+    repo: https://github.com/sqmk/pecl-jsmin.git
+    dest: '{{ jsmin_clone_dest }}'
+    version: '{{ jsmin_branch}}'
+
+- name: Run phpize
+  command: phpize{{ jsmin_php_version }}
+  args:
+    chdir: '{{ jsmin_clone_dest }}'
+
+- name: Configure jsmin for building
+  shell: './configure --with-php-config=php-config{{ jsmin_php_version }}'
+  args:
+    chdir: '{{ jsmin_clone_dest }}'
+
+- name: Build jsmin
+  make:
+    chdir: '{{ jsmin_clone_dest }}'
+    target: install
+
+- name: Create jsmin.ini
+  copy:
+    content: 'extension=jsmin.so'
+    dest: '/etc/php/{{ jsmin_php_version }}/mods-available/jsmin.ini'
+
+-  name: Enable jsmin
+   command: phpenmod -v {{ jsmin_php_version }} jsmin
+   when: jsmin_enable

@@ -1,0 +1,6 @@
+---
+# Location to clone jsmin to.
+jsmin_clone_dest: ~/git/jsmin
+
+# Whether to enable jsmin after installation.
+jsmin_enable: true

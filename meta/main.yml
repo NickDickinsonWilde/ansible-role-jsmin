@@ -1,0 +1,24 @@
+galaxy_info:
+  author: Nick Wilde
+  description: Build and install jsmin php extension
+
+  license: MIT
+
+  min_ansible_version: 2.2
+
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+
+  galaxy_tags:
+  - php
+  - jsmin
+  - javascript
+  - minification
+  - performance
+  - drupal
+  - advagg
