@@ -37,6 +37,11 @@ Then there are a bunch of path variables. These path variables change depending 
 
 The ini path to use to create the jsmin.ini if enabling jsmin.
 
+    jsmin_path_php: php{{ jsmin_php_version }} # Ubuntu
+    jsmin_path_php: php5 # Debian 8
+
+The path to the php-config binary.
+
     jsmin_path_phpconfig: php-config{{ jsmin_php_version }} # Ubuntu
     jsmin_path_phpconfig: php-config5 # Debian 8
 

@@ -14,7 +14,7 @@
   when: ansible_distribution == "Debian"
 
 - name: Get installed version
-  shell: {{ jsmin_path_php}} -i | grep -Po -m 1 "jsmin version => \K[0-9].[0-9].[0-9]"
+  shell: '{{ jsmin_path_php}} -i | grep -Po -m 1 "jsmin version => \K[0-9].[0-9].[0-9]"'
   register: jsmin_current_version
   failed_when: "jsmin_current_version.rc == 2"
   changed_when: false
