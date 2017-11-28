@@ -1,5 +1,6 @@
 ---
 jsmin_path_ini: /etc/php/{{ jsmin_php_version }}/mods-available/jsmin.ini
+jsmin_path_php: php{{ jsmin_php_version }}
 jsmin_path_phpconfig: php-config{{ jsmin_php_version }}
 jsmin_path_phpize: phpize{{ jsmin_php_version }}
 jsmin_path_phpenable: phpenmod -v {{ jsmin_php_version }}

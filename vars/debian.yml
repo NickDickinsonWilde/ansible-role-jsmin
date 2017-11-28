@@ -1,5 +1,6 @@
 ---
 jsmin_path_ini: /etc/php5/mods-available/jsmin.ini
+jsmin_path_php: php5
 jsmin_path_phpconfig: php-config5
 jsmin_path_phpize: phpize5
 jsmin_path_phpenable: php5enmod
