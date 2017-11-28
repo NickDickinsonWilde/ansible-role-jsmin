@@ -4,9 +4,3 @@ jsmin_clone_dest: ~/git/jsmin
 
 # Whether to enable jsmin after installation.
 jsmin_enable: true
-
-jsmin_path_ini: /etc/php/{{ jsmin_php_version }}/mods-available/jsmin.ini
-
-jsmin_path_phpconfig: php-config{{ jsmin_php_version }}
-
-jsmin_path_phpize: phpize{{ jsmin_php_version }}

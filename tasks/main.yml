@@ -10,6 +10,14 @@
   failed_when: "jsmin_current_version.rc == 2"
   changed_when: false
 
+- name: Include variables for Ubuntu
+  include_vars: ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: Include variables for Debian
+  include_vars: debian.yml
+  when: ansible_distribution == "Debian"
+
 - name: Select JSMin branch for PHP 5.x
   set_fact:
     jsmin_branch: master
@@ -72,10 +80,9 @@
     dest: '{{ jsmin_path_ini }}'
   when:
   - jsmin_latest_installed is undefined
-  - jsmin_enable
 
 - name: Enable jsmin
-  command: phpenmod -v {{ jsmin_php_version }} jsmin
+  command: '{{ jsmin_path_phpenable }} jsmin'
   when:
   - jsmin_enable
   - jsmin_latest_installed is undefined
