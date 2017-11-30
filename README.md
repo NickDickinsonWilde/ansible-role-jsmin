@@ -1,20 +1,16 @@
-Ansible Role: JSMin
-=========
+#Ansible Role: JSMin#
 
-Build and install the [jsmin PHP Extension](https://github.com/sqmk/pecl-jsmin/) on any Ubuntu or (probably) Debian based system.
+Build and install the latest version of the [jsmin PHP Extension](https://github.com/sqmk/pecl-jsmin/) on any Ubuntu/Debian based system.
 This extension provides a fast JavaScript minification function.
 
-Requirements
-------------
+##Requirements##
 
-- Debian/Ubuntu
+- Debian (8+)/Ubuntu(10+)
 - Git. A role such as [geerlingguy.git](https://galaxy.ansible.com/geerlingguy/git/) can supply this.
-- PHP (5.6)
-- PHP Development headers installed for any PHP version(s) you want to target.
+- PHP (5.6+)
+- PHP Development headers installed for each PHP version you want to target.
 
-
-Role Variables
---------------
+##Role Variables##
 
 The following two variables are defined in defaults/main.yml and will be over-written by any variables defined basically anywhere else with the same name
 
@@ -57,8 +53,7 @@ The path to the phpize binary.
 
 The path to the phpenable binary.
 
-Example Playbook
-----------------
+##Example Playbook##
 
 To  install `jsmin` for just your primary PHP version:
 
@@ -78,12 +73,10 @@ To install `jsmin` for multiple PHP versions. Note: this will probably not work 
       loop_control:
         loop_var: jsmin_php_version
 
-License
--------
+##License##
 
 MIT
 
-Author Information
-------------------
+##Author Information##
 
 Nick Wilde ([BriarMoon Design](https://design.briarmoon.ca))
