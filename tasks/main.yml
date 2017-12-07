@@ -5,13 +5,23 @@
   when: jsmin_php_version is undefined
   changed_when: false
 
-- name: Include variables for Ubuntu
-  include_vars: ubuntu.yml
-  when: ansible_distribution == "Ubuntu"
+- name: Test path validity for old PHP/Debian combinations.
+  stat: '{{ jsmin_path_php }}'
+  register: jsmin_path_php_stat
+  when:
+  - ansible_distribution == "Debian"
+  - ansible_distribution_major_version == 8
+  - jsmin_php_version|int == 5
+  changed_when: false
 
-- name: Include variables for Debian
+  name: Set variables for old PHP/Debian combinations.
   include_vars: debian.yml
-  when: ansible_distribution == "Debian"
+  when:
+  - ansible_distribution == "Debian"
+  - ansible_distribution_major_version == 8
+  - jsmin_php_version|int == 5
+  - jsmin_path_php_stat.stat.exists == false
+  changed_when: false
 
 - name: Get installed version
   shell: '{{ jsmin_path_php}} -i | grep -Po -m 1 "jsmin version => \K[0-9].[0-9].[0-9]"'

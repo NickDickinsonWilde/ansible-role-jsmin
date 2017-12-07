@@ -26,32 +26,28 @@ The location that jsmin will be cloned to for building.
 
 Whether or not to enable the jsmin module after building & installing.
 
-Then there are a bunch of path variables. These path variables change depending on OS and are defined in `vars/*.yml`. They are not easily over-written.
-
-    jsmin_path_ini: /etc/php/{{ jsmin_php_version }}/mods-available/jsmin.ini # Ubuntu
-    jsmin_path_ini: /etc/php5/mods-available/jsmin.ini # Debian 8
+    jsmin_path_ini: /etc/php/{{ jsmin_php_version }}/mods-available/jsmin.ini
 
 The ini path to use to create the jsmin.ini if enabling jsmin.
 
-    jsmin_path_php: php{{ jsmin_php_version }} # Ubuntu
-    jsmin_path_php: php5 # Debian 8
+    jsmin_path_php: php{{ jsmin_php_version }}
 
 The path to the php-config binary.
 
-    jsmin_path_phpconfig: php-config{{ jsmin_php_version }} # Ubuntu
-    jsmin_path_phpconfig: php-config5 # Debian 8
+    jsmin_path_phpconfig: php-config{{ jsmin_php_version }}
 
 The path to the php-config binary.
 
-    jsmin_path_phpize: phpize{{ jsmin_php_version }} # Ubuntu
-    jsmin_path_phpize: phpize5 # Debian 8
+    jsmin_path_phpize: phpize{{ jsmin_php_version }}
 
 The path to the phpize binary.
 
-    jsmin_path_phpenable: phpenable -v {{ jsmin_php_version }}# Ubuntu
-    jsmin_path_phpenable: php5enable # Debian 8
+    jsmin_path_phpenable: phpenable -v {{ jsmin_php_version }}
 
 The path to the phpenable binary.
+
+###Debian 8 with PHP 5.6###
+The default paths with Debian 8 and PHP 5.6 are different than on Ubuntu and Debian 9. To seamlessly account for this, the main task checks if the generic path doesn't exist. If the path doesn't exist, it imports the variables from `vars/debian.yml`
 
 ##Example Playbook##
 
@@ -61,7 +57,7 @@ To  install `jsmin` for just your primary PHP version:
       roles:
         -role: nickwilde1990.jsmin
 
-To install `jsmin` for multiple PHP versions. Note: this will probably not work on Debian 8 but will work fine on Ubuntu.
+To install `jsmin` for multiple PHP versions.
 
     - hosts: all
       tasks:
