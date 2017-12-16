@@ -10,15 +10,15 @@
   register: jsmin_path_php_stat
   when:
   - ansible_distribution == "Debian"
-  - ansible_distribution_major_version == 8
+  - ansible_distribution_major_version == "8"
   - jsmin_php_version|int == 5
   changed_when: false
 
-  name: Set variables for old PHP/Debian combinations.
+- name: Set variables for old PHP/Debian combinations.
   include_vars: debian.yml
   when:
   - ansible_distribution == "Debian"
-  - ansible_distribution_major_version == 8
+  - ansible_distribution_major_version == "8"
   - jsmin_php_version|int == 5
   - jsmin_path_php_stat.stat.exists == false
   changed_when: false
