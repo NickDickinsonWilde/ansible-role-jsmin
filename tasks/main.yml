@@ -6,7 +6,8 @@
   changed_when: false
 
 - name: Test path validity for old PHP/Debian combinations.
-  stat: '{{ jsmin_path_php }}'
+  stat:
+    path: '{{ jsmin_path_php }}'
   register: jsmin_path_php_stat
   when:
   - ansible_distribution == "Debian"
